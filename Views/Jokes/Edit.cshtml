@@ -1,0 +1,47 @@
+﻿@model Jokes_APP_ASP.NET_CORE_WE_APP__mvc_.Models.Joke
+
+@{
+    ViewData["Title"] = "Edit Joke";
+}
+
+<h1>Edit Joke</h1>
+
+<p>Update your joke below.</p>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group mb-3">
+                <label asp-for="JokeQuestion" class="control-label">Joke Question</label>
+                <textarea asp-for="JokeQuestion" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="JokeQuestion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="JokeAnswer" class="control-label">Joke Answer</label>
+                <textarea asp-for="JokeAnswer" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="JokeAnswer" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

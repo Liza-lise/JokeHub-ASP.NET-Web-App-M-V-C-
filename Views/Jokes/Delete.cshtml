@@ -1,0 +1,53 @@
+﻿@model Jokes_APP_ASP.NET_CORE_WE_APP__mvc_.Models.Joke
+
+@{
+    ViewData["Title"] = "Delete Joke";
+}
+
+<h1>Delete Joke</h1>
+
+<div class="alert alert-warning">
+    Are you sure you want to permanently delete this joke?
+</div>
+
+<div class="card">
+    <div class="card-body">
+
+        <h4>Question</h4>
+        <p>@Model.JokeQuestion</p>
+
+        <hr />
+
+        <h4>Answer</h4>
+        <p>@Model.JokeAnswer</p>
+
+        <hr />
+
+        <p>
+            <strong>Submitted by:</strong>
+            @(Model.CreatedByUser?.UserName ?? "Unknown")
+        </p>
+
+        <p>
+            <strong>Date created:</strong>
+            @Model.DateCreated.ToString("dd MMM yyyy")
+        </p>
+
+        <hr />
+
+        <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <button type="submit" class="btn btn-danger">
+                Yes, Delete Joke
+            </button>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+</div>

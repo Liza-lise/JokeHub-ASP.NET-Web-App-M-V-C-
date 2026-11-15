@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Jokes_APP_ASP.NET_CORE_WE_APP__mvc_.Models.Joke>
+
+@{
+    ViewData["Title"] = "JokeHub";
+    var currentUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+}
+
+<h1>JokeHub</h1>
+
+<p>Discover jokes shared by our community.</p>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Submit a Joke</a>
+    </p>
+}
+else
+{
+    <p>
+        <a asp-area="Identity" asp-page="/Account/Login">Log in</a>
+        to submit your own joke.
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Creator</th>
+            <th>Date Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.JokeQuestion</td>
+                <td>@item.JokeAnswer</td>
+                <td>@(item.CreatedByUser?.UserName ?? "Unknown")</td>
+                <td>@item.DateCreated.ToString("dd MMM yyyy")</td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+
+                    @if (User.Identity?.IsAuthenticated == true &&
+                   item.CreatedByUserId == currentUserId)
+                    {
+                        <span> | </span>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <span> | </span>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

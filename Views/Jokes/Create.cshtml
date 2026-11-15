@@ -1,0 +1,44 @@
+﻿@model Jokes_APP_ASP.NET_CORE_WE_APP__mvc_.Models.Joke
+
+@{
+    ViewData["Title"] = "Submit a Joke";
+}
+
+<h1>Submit a Joke</h1>
+
+<p>Share something funny with the JokeHub community.</p>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="JokeQuestion" class="control-label">Joke Question</label>
+                <textarea asp-for="JokeQuestion" class="form-control" rows="3"
+                          placeholder="Enter your joke question..."></textarea>
+                <span asp-validation-for="JokeQuestion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="JokeAnswer" class="control-label">Joke Answer</label>
+                <textarea asp-for="JokeAnswer" class="form-control" rows="3"
+                          placeholder="Enter the punchline..."></textarea>
+                <span asp-validation-for="JokeAnswer" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Joke</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

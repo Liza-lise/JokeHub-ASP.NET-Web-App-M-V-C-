@@ -1,0 +1,51 @@
+﻿@model Jokes_APP_ASP.NET_CORE_WE_APP__mvc_.Models.Joke
+
+@{
+    ViewData["Title"] = "Joke Details";
+    var currentUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    var isOwner = User.Identity?.IsAuthenticated == true &&
+                  Model.CreatedByUserId == currentUserId;
+}
+
+<h1>Joke Details</h1>
+
+<hr />
+
+<div class="card">
+    <div class="card-body">
+
+        <h4>Question</h4>
+        <p>@Model.JokeQuestion</p>
+
+        <hr />
+
+        <h4>Answer</h4>
+        <p>@Model.JokeAnswer</p>
+
+        <hr />
+
+        <p>
+            <strong>Submitted by:</strong>
+            @(Model.CreatedByUser?.UserName ?? "Unknown")
+        </p>
+
+        <p>
+            <strong>Date created:</strong>
+            @Model.DateCreated.ToString("dd MMM yyyy")
+        </p>
+
+        <hr />
+
+        @if (isOwner)
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id"
+               class="btn btn-primary">Edit Joke</a>
+
+            <a asp-action="Delete" asp-route-id="@Model.Id"
+               class="btn btn-danger">Delete Joke</a>
+        }
+
+        <a asp-action="Index" class="btn btn-secondary">Back to Jokes</a>
+
+    </div>
+</div>
