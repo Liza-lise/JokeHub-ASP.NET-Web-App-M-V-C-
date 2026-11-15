@@ -2,56 +2,61 @@
 
 **A Joke Sharing Web Application built with ASP.NET Core MVC**
 
-JokeHub is a web application developed using C# and ASP.NET Core MVC. The application provides a platform where users can register, log in, and interact with jokes.
+JokeHub is a web application developed using C# and ASP.NET Core MVC. It provides a platform where users can register, authenticate, and interact with jokes through a web-based interface.
+
+The project demonstrates practical application development skills, focusing on backend engineering, database integration, authentication, and the implementation of CRUD functionality.
 
 ## Project Overview
 
-The purpose of JokeHub is to demonstrate practical web application development using the ASP.NET Core MVC architecture.
+JokeHub was developed to explore and demonstrate the ASP.NET Core MVC architecture and the development of database-driven web applications.
 
-The project focuses on backend development, database integration, user authentication, and the implementation of CRUD operations.
+The application uses the Model-View-Controller (MVC) pattern to separate application logic, data management, and user interface components.
 
-## Technologies Used
+## Technologies & Tools
 
-- C#
-- ASP.NET Core MVC
-- .NET 8
-- Entity Framework Core
-- SQL Server
-- ASP.NET Core Identity
-- HTML
-- CSS
-- JavaScript
-- Bootstrap
+- **Language:** C#
+- **Framework:** ASP.NET Core MVC (.NET 8)
+- **ORM:** Entity Framework Core 8
+- **Database:** Microsoft SQL Server (LocalDB)
+- **Authentication:** ASP.NET Core Identity
+- **Frontend:** HTML, CSS, JavaScript, Bootstrap
+- **Development Environment:** Visual Studio 2022
+- **Version Control:** Git and GitHub
 
 ## Key Features
 
-- User registration and authentication
-- User login and logout
-- Joke management
-- Create, read, update and delete operations (CRUD)
-- Database integration using Entity Framework Core
-- MVC architectural pattern
+- User registration and authentication.
+- User login and logout.
+- Joke management.
+- Create, Read, Update and Delete (CRUD) operations.
+- Database integration using Entity Framework Core.
+- User authentication and authorization.
+- MVC architectural pattern.
 
-## Project Structure
+## Project Architecture
 
 ```text
 JokeHub/
 │
-├── Areas/
-│   └── Identity/
-│
 ├── Controllers/
 │
 ├── Data/
+│   ├── ApplicationDbContext.cs
+│   └── Migrations/
 │
 ├── Models/
 │
 ├── Views/
 │
 ├── wwwroot/
+│   ├── css/
+│   ├── js/
+│   └── lib/
 │
+├── Properties/
 ├── Program.cs
 ├── appsettings.json
+├── *.csproj
 └── README.md
 ```
 
@@ -59,45 +64,74 @@ JokeHub/
 
 ### Prerequisites
 
+Before running the application, ensure you have:
+
 - Visual Studio 2022
 - .NET 8 SDK
-- SQL Server
-- SQL Server Management Studio (optional)
+- Microsoft SQL Server LocalDB
+- Entity Framework Core tools
 
 ### Installation
 
-1. Clone the repository:
+**1. Clone the repository**
 
 ```bash
-git clone https://github.com/Liza-lise/JokeHub.git
+git clone https://github.com/Liza-lise/JokeHub-ASP.NET-Web-App-M-V-C-.git
 ```
 
-2. Open the solution in Visual Studio 2022.
+**2. Open the solution**
 
-3. Configure your SQL Server connection string in `appsettings.json`.
+Open the `.sln` file using Visual Studio 2022.
 
-4. Apply the database migrations if required:
+**3. Configure the database**
+
+Check the connection string in `appsettings.json` and ensure SQL Server LocalDB is available.
+
+**4. Apply database migrations**
+
+Using the Visual Studio Package Manager Console:
+
+```powershell
+Update-Database
+```
+
+Alternatively, using the .NET CLI:
 
 ```bash
 dotnet ef database update
 ```
 
-5. Build and run the application.
+**5. Run the application**
+
+Build and run the project using Visual Studio, or execute:
+
+```bash
+dotnet run
+```
 
 ## Learning Objectives
 
-This project demonstrates practical experience in:
+Through this project, I developed practical experience in:
 
-- ASP.NET Core MVC development
-- Backend application architecture
-- Database connectivity
-- Authentication and authorization
-- Entity Framework Core
-- Software development practices
+- ASP.NET Core MVC application development.
+- C# backend programming.
+- Database design and integration.
+- Entity Framework Core and database migrations.
+- Authentication and authorization using ASP.NET Core Identity.
+- CRUD application development.
+- Git and GitHub version control.
+- Structuring and maintaining a web application.
+
+## Future Improvements
+
+- Production database integration.
+- Cloud deployment.
+- Additional user-focused functionality.
+- Improved application interface and user experience.
 
 ## Developer
 
-Developed by **Lizalise Hlangani**
+**Lizalise Hlangani**
 
 ICT Professional | Application Development
 
@@ -105,4 +139,4 @@ GitHub: [Liza-lise](https://github.com/Liza-lise)
 
 ---
 
-*JokeHub – Bringing laughter and technology together.*
+*JokeHub — Bringing laughter and technology together.*
